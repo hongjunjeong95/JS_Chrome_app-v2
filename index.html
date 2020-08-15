@@ -9,18 +9,38 @@
   <body>
     <header></header>
     <main>
-      <div class="clock-container">
-        <h4 id="jsClock">00:00</h4>
-      </div>
-      <div class="user-container">
-        <h4 id="jsUser" class="">What is your name?</h4>
-        <form id="jsUserForm">
-          <input type="text" placeholder="What is your name?" />
-        </form>
+      <div class="wrapper">
+        <!-- clock -->
+        <div id="clock-container">
+          <h4 id="jsClock">00:00</h4>
+        </div>
+
+        <!-- userName -->
+        <div id="user-container">
+          <h4 id="jsUser">What is your name?</h4>
+          <form id="jsUserForm">
+            <input type="text" placeholder="What is your name?" />
+          </form>
+          <button id="jsResetName" class="hiding">reset</button>
+        </div>
+
+        <!-- todo -->
+        <div id="todo-container" class="hiding">
+          <h1>Tasks</h1>
+          <form id="jsTodoForm">
+            <input type="text" placeholder="Add task" required />
+          </form>
+          <h2>Pending</h2>
+          <ul id="jsPendingList"></ul>
+
+          <h2>Finished</h2>
+          <ul id="jsFinishedList"></ul>
+        </div>
       </div>
     </main>
     <footer></footer>
-    <script src="./src/js/user.js"></script>
-    <script src="./src/js/clock.js"></script>
+    <script src="src/js/todo.js"></script>
+    <script src="src/js/user.js"></script>
+    <script src="src/js/clock.js"></script>
   </body>
 </html>

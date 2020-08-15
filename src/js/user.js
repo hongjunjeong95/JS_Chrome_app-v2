@@ -3,21 +3,33 @@ const USER_LS = 'currentUser';
 const showUser = document.getElementById('jsUser');
 const userForm = document.getElementById('jsUserForm');
 const userInput = document.querySelector('#jsUserForm input');
-
+const resetBtn = document.getElementById('jsResetName');
+const todoContainer = document.getElementById('todo-container');
+console.log(todoContainer);
 const setUser = (userValue) => {
   userForm.classList.add('hiding');
   showUser.innerText = userValue;
 };
 
+const handleRest = () => {
+  localStorage.removeItem(USER_LS);
+  userForm.classList.remove('hiding');
+  resetBtn.classList.add('hiding');
+  todoContainer.classList.add('hiding');
+  showUser.innerText = 'What is your name?';
+};
+
 const handleSubmit = (event) => {
   event.preventDefault();
+  resetBtn.classList.remove('hiding');
+  resetBtn.addEventListener('click', handleRest);
+  todoContainer.classList.remove('hiding');
   const userValue = userInput.value;
   localStorage.setItem(USER_LS, userValue);
   setUser(userValue);
 };
 
 const askUser = () => {
-  userForm.classList.remove('hiding');
   userForm.addEventListener('submit', handleSubmit);
 };
 
@@ -26,13 +38,12 @@ const loadUser = () => {
   if (currentUser === null) {
     askUser();
   } else {
-    console.log('ask');
     setUser(currentUser);
   }
 };
 
-const init = () => {
+function init() {
   loadUser();
-};
+}
 
 init();

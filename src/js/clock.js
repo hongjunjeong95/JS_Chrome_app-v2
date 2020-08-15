@@ -12,8 +12,8 @@ const handleTime = () => {
   clock.innerHTML = `${hours}:${minutes}:${seconds}`;
 };
 
-const init = () => {
+function init() {
   setInterval(handleTime, 1000);
-};
+}
 
 init();
