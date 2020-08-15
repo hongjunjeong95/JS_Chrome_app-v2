@@ -242,7 +242,7 @@ const paintTodo = (text, option) => {
 
   finBtn.innerHTML = '✅';
   finBtn.addEventListener('click', handleFinish);
-  todoBtn.innerHTML = '🔺';
+  todoBtn.innerHTML = '⏪';
   todoBtn.addEventListener('click', handlePending);
 
   if (option === PENDING_LS) {
@@ -275,6 +275,8 @@ const paintTodo = (text, option) => {
 
 const handleTodoSubmit = (event) => {
   event.preventDefault();
+  const h2s = todoContainer.querySelectorAll('h2');
+  h2s.forEach((h2) => h2.classList.remove('hiding'));
   const todoInput = input.value;
   paintTodo(todoInput, PENDING_LS);
   input.value = '';
