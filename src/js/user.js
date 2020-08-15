@@ -5,10 +5,12 @@ const userForm = document.getElementById('jsUserForm');
 const userInput = document.querySelector('#jsUserForm input');
 const resetBtn = document.getElementById('jsResetName');
 const todoContainer = document.getElementById('todo-container');
-console.log(todoContainer);
+
 const setUser = (userValue) => {
   userForm.classList.add('hiding');
   showUser.innerText = userValue;
+  resetBtn.classList.remove('hiding');
+  todoContainer.classList.remove('hiding');
 };
 
 const handleRest = () => {
