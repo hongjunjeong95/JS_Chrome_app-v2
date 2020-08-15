@@ -1,0 +1,10 @@
+#clock-container {
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  /* color: white; */
+}
+
+#jsClock {
+  font-size: 100px;
+}

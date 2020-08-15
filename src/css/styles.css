@@ -1,3 +1,7 @@
 @import './config/reset.css';
+@import './config/utils.css';
+
+@import './partials/clock.css';
+@import './partials/user.css';
 
 @import './main.css';
