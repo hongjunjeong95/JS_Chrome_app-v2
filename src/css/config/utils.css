@@ -5,3 +5,11 @@
 .showing {
   display: block;
 }
+
+input {
+  padding: 10px 13px;
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  text-align: center;
+}

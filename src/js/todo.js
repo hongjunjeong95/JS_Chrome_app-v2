@@ -242,7 +242,7 @@ const paintTodo = (text, option) => {
 
   finBtn.innerHTML = '✅';
   finBtn.addEventListener('click', handleFinish);
-  todoBtn.innerHTML = '🔺';
+  todoBtn.innerHTML = '⏪';
   todoBtn.addEventListener('click', handlePending);
 
   if (option === PENDING_LS) {

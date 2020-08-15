@@ -3,5 +3,6 @@
 
 @import './partials/clock.css';
 @import './partials/user.css';
+@import './partials/todo.css';
 
 @import './main.css';

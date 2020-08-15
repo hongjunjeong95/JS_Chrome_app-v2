@@ -7,38 +7,42 @@
     <title>JSChromeApp</title>
   </head>
   <body>
-    <header></header>
+    <header>
+      <!-- clock -->
+      <div id="clock-container">
+        <h4 id="jsClock">00:00</h4>
+      </div>
+
+      <!-- userName -->
+      <div id="user-container">
+        <div class="user__column">
+          <h4 id="jsUser">What is your name?</h4>
+          <button id="jsResetName" class="hiding">reset</button>
+        </div>
+        <div class="user__column">
+          <form id="jsUserForm">
+            <input type="text" placeholder="What is your name?" />
+          </form>
+        </div>
+      </div>
+    </header>
     <main>
       <div class="wrapper">
-        <!-- clock -->
-        <div id="clock-container">
-          <h4 id="jsClock">00:00</h4>
-        </div>
-
-        <!-- userName -->
-        <div id="user-container">
-          <div class="user__column">
-            <h4 id="jsUser">What is your name?</h4>
-            <button id="jsResetName" class="hiding">reset</button>
-          </div>
-          <div class="user__column">
-            <form id="jsUserForm">
-              <input type="text" placeholder="What is your name?" />
-            </form>
-          </div>
-        </div>
-
         <!-- todo -->
         <div id="todo-container" class="hiding">
-          <h1>Tasks</h1>
           <form id="jsTodoForm">
-            <input type="text" placeholder="Add task" required />
+            <input type="text" placeholder="Add tasks" required />
           </form>
-          <h2>Pending</h2>
-          <ul id="jsPendingList"></ul>
-
-          <h2>Finished</h2>
-          <ul id="jsFinishedList"></ul>
+          <div class="todoList-container">
+            <div class="todo__column">
+              <h2>Pending</h2>
+              <ul id="jsPendingList"></ul>
+            </div>
+            <div class="todo__column">
+              <h2>Finished</h2>
+              <ul id="jsFinishedList"></ul>
+            </div>
+          </div>
         </div>
       </div>
     </main>
