@@ -1,7 +1,4 @@
 #schedule-container {
-  position: fixed;
-  top: 100px;
-  right: 50px;
   background-color: rgba(62, 62, 77, 0.3);
   padding: 20px;
   border-radius: 30px;
@@ -11,6 +8,12 @@
   display: flex;
   justify-content: center;
   margin-bottom: 30px;
+}
+
+#jsScheduleForm input[type='date'] {
+  margin-right: 20px;
+  font-size: 12px;
+  font-weight: 600;
 }
 
 .scheduleList-container {

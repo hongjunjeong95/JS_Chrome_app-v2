@@ -1,7 +1,7 @@
 const SCHEDULE_LS = 'schedule';
 
 const scheduleForm = document.getElementById('jsScheduleForm');
-const scheduleInput = scheduleForm.querySelector('input');
+const scheduleInput = scheduleForm.querySelectorAll('input');
 const scheduleList = document.getElementById('jsScheduleList');
 
 let schedules = [];
@@ -149,11 +149,13 @@ const paintSchedule = (text) => {
 
 const handleScheduleSubmit = (event) => {
   event.preventDefault();
-  const h2s = todoContainer.querySelectorAll('h2');
-  h2s.forEach((h2) => h2.classList.remove('hiding'));
-  const todoInput = scheduleInput.value;
-  paintSchedule(todoInput);
-  scheduleInput.value = '';
+  const h2 = scheduleContainer.querySelector('h2');
+  h2.classList.remove('hiding');
+  const date = scheduleInput[0].value.split('-');
+  console.log(date);
+  const inputValue = `${date[1]}-${date[2]} ${scheduleInput[1].value}`;
+  paintSchedule(inputValue);
+  scheduleInput[1].value = '';
 };
 
 const askSchedule = () => {

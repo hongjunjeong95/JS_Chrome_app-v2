@@ -1,8 +1,8 @@
 #todo-container {
   background-color: rgba(62, 62, 77, 0.3);
-  /* box-shadow: -3px -3px 10px 5px rgba(62, 62, 77, 0.3); */
   padding: 20px;
   border-radius: 30px;
+  margin-right: 20px;
 }
 
 #jsTodoForm {
