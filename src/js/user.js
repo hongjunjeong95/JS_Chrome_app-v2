@@ -24,7 +24,7 @@ const handleRest = () => {
 const handleSubmit = (event) => {
   event.preventDefault();
   resetBtn.classList.remove('hiding');
-  resetBtn.addEventListener('click', handleRest);
+
   todoContainer.classList.remove('hiding');
   const userValue = userInput.value;
   localStorage.setItem(USER_LS, userValue);
@@ -46,6 +46,7 @@ const loadUser = () => {
 
 function init() {
   loadUser();
+  resetBtn.addEventListener('click', handleRest);
 }
 
 init();
