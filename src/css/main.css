@@ -23,6 +23,10 @@ body {
   background-attachment: fixed;
 }
 
+main {
+  display: flex;
+}
+
 .bgImage {
   position: absolute;
   top: 0;

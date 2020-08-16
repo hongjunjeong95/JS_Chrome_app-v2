@@ -24,6 +24,8 @@ const handleRest = () => {
 const handleSubmit = (event) => {
   event.preventDefault();
   resetBtn.classList.remove('hiding');
+  const h2s = todoContainer.querySelectorAll('h2');
+  h2s.forEach((h2) => h2.classList.remove('hiding'));
 
   todoContainer.classList.remove('hiding');
   const userValue = userInput.value;
