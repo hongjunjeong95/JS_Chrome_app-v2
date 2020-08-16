@@ -53,7 +53,7 @@ const handleScheduleDown = (event) => {
   if (nextLi === undefined) return;
 
   const nextLiId = nextLi.id;
-  scheduleDownIdRenewal(SCHEDULE_LS, li);
+  scheduleDownIdRenewal(li);
 
   for (let i = 0; i < scheduleList.childNodes.length; i++) {
     if (parseInt(scheduleList.childNodes[i].id) === nextLiId) {
@@ -90,7 +90,7 @@ const handleScheduleUp = (event) => {
   if (prevLi === undefined) return;
 
   const prevLiId = prevLi.id;
-  scheduleUpIdRenewal(SCHEDULE_LS, li);
+  scheduleUpIdRenewal(li);
 
   for (let i = 0; i < scheduleList.childNodes.length; i++) {
     if (scheduleList.childNodes[i].id === li.id) {
