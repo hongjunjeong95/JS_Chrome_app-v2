@@ -36,7 +36,7 @@ const handleGeoSuccess = (position) => {
     longitude,
   };
   saveItem(coordsObj);
-  setCoords(latitude,longitude);
+  setCoords(latitude, longitude);
 };
 
 const handleGeoError = () => {
@@ -50,7 +50,7 @@ const askCoords = () => {
 function init() {
   const loadedCoords = localStorage.getItem(COORDS);
 
-  if (loadedCoords === null || ) {
+  if (loadedCoords === null) {
     askCoords();
   } else {
     const parsedCoords = JSON.parse(loadedCoords);
