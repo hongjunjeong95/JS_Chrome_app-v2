@@ -39,4 +39,5 @@ body {
 
 .wrapper {
   display: flex;
+  justify-content: space-evenly;
 }

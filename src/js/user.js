@@ -15,7 +15,7 @@ const setUser = (userValue) => {
   scheduleContainer.classList.remove('hiding');
 };
 
-const handleRest = () => {
+const handleReset = () => {
   localStorage.removeItem(USER_LS);
   userForm.classList.remove('hiding');
   resetBtn.classList.add('hiding');
@@ -54,7 +54,7 @@ const loadUser = () => {
 
 function init() {
   loadUser();
-  resetBtn.addEventListener('click', handleRest);
+  resetBtn.addEventListener('click', handleReset);
 }
 
 init();
