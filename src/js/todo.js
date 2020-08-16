@@ -3,9 +3,7 @@ const FINISHED_LS = 'finished';
 
 const todoForm = document.getElementById('jsTodoForm');
 const input = todoForm.querySelector('input');
-const pending = document.getElementById('jsPending');
 const pendingList = document.getElementById('jsPendingList');
-const finished = document.getElementById('jsFinished');
 const finishedList = document.getElementById('jsFinishedList');
 
 let pendings = [];
@@ -171,6 +169,7 @@ const handleUp = (event) => {
     const prevLi = pendings.find((pending) => {
       return pending.id === parseInt(li.id) - 1;
     });
+    console.log(prevLi);
     if (prevLi === undefined) return;
 
     const prevLiId = prevLi.id;
@@ -207,8 +206,6 @@ const handleUp = (event) => {
     }
 
     saveList(FINISHED_LS, dones);
-
-    saveList(PENDING_LS, pendings);
   }
 };
 
