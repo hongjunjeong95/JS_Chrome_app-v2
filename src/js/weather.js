@@ -33,10 +33,16 @@ const setCoords = (lat, lon) => {
       return response.json();
     })
     .then((json) => {
-      const todayTemp = json.main.temp;
-      const todayWeather = json.weather[0].main;
+      const todayTemp = document.getElementById('temp');
+      const todayWeather = document.getElementById('weather');
+      const place = document.getElementById('place');
+
+      const getTemp = json.main.temp;
+      const getWeather = json.weather[0].main;
       const currentPlace = json.name;
-      weather.innerHTML = `${todayTemp}°C @ ${todayWeather} @ ${currentPlace}`;
+      todayTemp.innerHTML = `Today Temperature: ${getTemp}`;
+      todayWeather.innerHTML = `Today Weather: ${getWeather}`;
+      place.innerHTML = `Place: ${currentPlace}`;
     });
 };
 

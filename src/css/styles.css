@@ -4,5 +4,6 @@
 @import './partials/clock.css';
 @import './partials/user.css';
 @import './partials/todo.css';
+@import './partials/weather.css';
 
 @import './main.css';

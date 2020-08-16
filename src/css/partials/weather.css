@@ -1,0 +1,8 @@
+#jsWeather {
+  font-size: 25px;
+  margin-left: 20px;
+}
+
+#jsWeather h1:not(:last-child) {
+  margin-bottom: 10px;
+}
