@@ -209,7 +209,7 @@ const handleUp = (event) => {
   }
 };
 
-const handleAmendInput = (event, option) => {
+function handleAmendInput(event, option) {
   event.preventDefault();
   const form = event.target;
   const li = form.parentNode;
@@ -234,9 +234,9 @@ const handleAmendInput = (event, option) => {
     });
     saveList(PENDING_LS, dones);
   }
-};
+}
 
-const handleAmend = (event) => {
+function handleAmend(event) {
   const btn = event.target;
   const li = btn.parentNode;
   const ul = li.parentNode;
@@ -258,7 +258,7 @@ const handleAmend = (event) => {
       handleAmendInput(event, "jsFinishedList")
     );
   }
-};
+}
 
 const genericElement = () => {
   const li = document.createElement("li");

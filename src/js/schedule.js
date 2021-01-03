@@ -105,11 +105,47 @@ const handleScheduleUp = (event) => {
   saveScheduleList(schedules);
 };
 
+const handleAmendScheduleInput = (event) => {
+  event.preventDefault();
+  console.log("hi");
+  const form = event.target;
+  const li = form.parentNode;
+  const span = li.childNodes[4];
+  const input = form.querySelector("input");
+  const text = input.value;
+  console.log(text);
+  span.innerHTML = text;
+  li.removeChild(form);
+
+  schedules.forEach(function (todo) {
+    if (todo.id === parseInt(li.id)) {
+      todo.text = text;
+    }
+  });
+  saveList(SCHEDULE_LS, schedules);
+};
+
+const handleAmendSchedule = (event) => {
+  const btn = event.target;
+  const li = btn.parentNode;
+  const span = li.childNodes[4];
+  const input = document.createElement("input");
+  const form = document.createElement("form");
+
+  input.value = span.innerHTML;
+  form.appendChild(input);
+  li.appendChild(form);
+  span.innerHTML = "";
+  console.log("hi2");
+  form.addEventListener("submit", handleAmendScheduleInput);
+};
+
 const scheduleGenericElement = () => {
   const li = document.createElement("li");
   const delBtn = document.createElement("button");
   const upBtn = document.createElement("button");
   const downBtn = document.createElement("button");
+  const amendBtn = document.createElement("butoon");
 
   delBtn.innerHTML = "❌";
   delBtn.addEventListener("click", handleDeleteSchedule);
@@ -122,6 +158,10 @@ const scheduleGenericElement = () => {
   downBtn.innerHTML = "🔽";
   downBtn.addEventListener("click", handleScheduleDown);
   li.appendChild(downBtn);
+
+  amendBtn.innerHTML = "✍";
+  amendBtn.addEventListener("click", handleAmendSchedule);
+  li.appendChild(amendBtn);
 
   return li;
 };
