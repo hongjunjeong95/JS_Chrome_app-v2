@@ -1,10 +1,10 @@
-const PENDING_LS = 'pending';
-const FINISHED_LS = 'finished';
+const PENDING_LS = "pending";
+const FINISHED_LS = "finished";
 
-const todoForm = document.getElementById('jsTodoForm');
-const input = todoForm.querySelector('input');
-const pendingList = document.getElementById('jsPendingList');
-const finishedList = document.getElementById('jsFinishedList');
+const todoForm = document.getElementById("jsTodoForm");
+const input = todoForm.querySelector("input");
+const pendingList = document.getElementById("jsPendingList");
+const finishedList = document.getElementById("jsFinishedList");
 
 let pendings = [];
 let dones = [];
@@ -16,7 +16,7 @@ const saveList = (list, data) => {
 const handleChange = (event, option) => {
   const target = event.target;
   const li = target.parentNode;
-  const span = li.childNodes[4];
+  const span = li.childNodes[5];
   const text = span.innerHTML;
   paintTodo(text, option);
   handleDelete(event);
@@ -34,7 +34,7 @@ const handleDelete = (event) => {
   const btn = event.target;
   const li = btn.parentNode;
   const ul = li.parentNode;
-  if (ul.id === 'jsPendingList') {
+  if (ul.id === "jsPendingList") {
     pendingList.removeChild(li);
     const cleanPendings = pendings.filter(function (todo) {
       return todo.id !== parseInt(li.id);
@@ -50,7 +50,7 @@ const handleDelete = (event) => {
     }
 
     saveList(PENDING_LS, pendings);
-  } else if (ul.id === 'jsFinishedList') {
+  } else if (ul.id === "jsFinishedList") {
     finishedList.removeChild(li);
     const cleanDones = dones.filter(function (todo) {
       return todo.id !== parseInt(li.id);
@@ -95,7 +95,7 @@ const handleDown = (event) => {
   const btn = event.target;
   const li = btn.parentNode;
   const ul = li.parentNode;
-  if (ul.id === 'jsPendingList') {
+  if (ul.id === "jsPendingList") {
     const nextLi = pendings.find((pending) => {
       return pending.id === parseInt(li.id) + 1;
     });
@@ -115,7 +115,7 @@ const handleDown = (event) => {
     }
 
     saveList(PENDING_LS, pendings);
-  } else if (ul.id === 'jsFinishedList') {
+  } else if (ul.id === "jsFinishedList") {
     const nextLi = dones.find((done) => {
       return done.id === parseInt(li.id) + 1;
     });
@@ -165,7 +165,7 @@ const handleUp = (event) => {
   const btn = event.target;
   const li = btn.parentNode;
   const ul = li.parentNode;
-  if (ul.id === 'jsPendingList') {
+  if (ul.id === "jsPendingList") {
     const prevLi = pendings.find((pending) => {
       return pending.id === parseInt(li.id) - 1;
     });
@@ -186,7 +186,7 @@ const handleUp = (event) => {
     }
 
     saveList(PENDING_LS, pendings);
-  } else if (ul.id === 'jsFinishedList') {
+  } else if (ul.id === "jsFinishedList") {
     const prevLi = dones.find((done) => {
       return done.id === parseInt(li.id) - 1;
     });
@@ -209,38 +209,94 @@ const handleUp = (event) => {
   }
 };
 
-const genericElement = () => {
-  const li = document.createElement('li');
-  const delBtn = document.createElement('button');
-  const upBtn = document.createElement('button');
-  const downBtn = document.createElement('button');
+const handleAmendInput = (event, option) => {
+  event.preventDefault();
+  const form = event.target;
+  const li = form.parentNode;
+  const span = li.childNodes[5];
+  const input = form.querySelector("input");
+  const text = input.value;
+  span.innerHTML = text;
+  li.removeChild(form);
 
-  delBtn.innerHTML = '❌';
-  delBtn.addEventListener('click', handleDelete);
+  if (option === "jsPendingList") {
+    pendings.forEach(function (todo) {
+      if (todo.id === parseInt(li.id)) {
+        todo.text = text;
+      }
+    });
+    saveList(PENDING_LS, pendings);
+  } else if (option === "jsFinishedList") {
+    dones.forEach(function (todo) {
+      if (todo.id === parseInt(li.id)) {
+        todo.text = text;
+      }
+    });
+    saveList(PENDING_LS, dones);
+  }
+};
+
+const handleAmend = (event) => {
+  const btn = event.target;
+  const li = btn.parentNode;
+  const ul = li.parentNode;
+  const span = li.childNodes[5];
+  const input = document.createElement("input");
+  const form = document.createElement("form");
+
+  input.value = span.innerHTML;
+  form.appendChild(input);
+  li.appendChild(form);
+  span.innerHTML = "";
+
+  if (ul.id === "jsPendingList") {
+    form.addEventListener("submit", (event) =>
+      handleAmendInput(event, "jsPendingList")
+    );
+  } else if (ul.id === "jsFinishedList") {
+    form.addEventListener("submit", (event) =>
+      handleAmendInput(event, "jsFinishedList")
+    );
+  }
+};
+
+const genericElement = () => {
+  const li = document.createElement("li");
+  const delBtn = document.createElement("button");
+  const upBtn = document.createElement("button");
+  const downBtn = document.createElement("button");
+  const amendBtn = document.createElement("butoon");
+
+  delBtn.innerHTML = "❌";
+  delBtn.addEventListener("click", handleDelete);
   li.appendChild(delBtn);
 
-  upBtn.innerHTML = '🔼';
-  upBtn.addEventListener('click', handleUp);
+  upBtn.innerHTML = "🔼";
+  upBtn.addEventListener("click", handleUp);
   li.appendChild(upBtn);
 
-  downBtn.innerHTML = '🔽';
-  downBtn.addEventListener('click', handleDown);
+  downBtn.innerHTML = "🔽";
+  downBtn.addEventListener("click", handleDown);
   li.appendChild(downBtn);
+
+  amendBtn.innerHTML = "✍";
+  amendBtn.addEventListener("click", handleAmend);
+  li.appendChild(amendBtn);
 
   return li;
 };
 
 const paintTodo = (text, option) => {
   const li = genericElement();
-  const span = document.createElement('span');
-  const finBtn = document.createElement('button');
-  const todoBtn = document.createElement('button');
+  const span = document.createElement("span");
+  const finBtn = document.createElement("button");
+  const todoBtn = document.createElement("button");
   let id = 0;
 
-  finBtn.innerHTML = '✅';
-  finBtn.addEventListener('click', handleFinish);
-  todoBtn.innerHTML = '⏪';
-  todoBtn.addEventListener('click', handlePending);
+  finBtn.innerHTML = "✅";
+  finBtn.addEventListener("click", handleFinish);
+  todoBtn.innerHTML = "⏪";
+  todoBtn.addEventListener("click", handlePending);
 
   if (option === PENDING_LS) {
     li.appendChild(finBtn);
@@ -272,15 +328,15 @@ const paintTodo = (text, option) => {
 
 const handleTodoSubmit = (event) => {
   event.preventDefault();
-  const h2s = todoContainer.querySelectorAll('h2');
-  h2s.forEach((h2) => h2.classList.remove('hiding'));
+  // const h2s = todoContainer.querySelectorAll('h2');
+  // h2s.forEach((h2) => h2.classList.remove('hiding'));
   const todoInput = input.value;
   paintTodo(todoInput, PENDING_LS);
-  input.value = '';
+  input.value = "";
 };
 
 const askTodo = () => {
-  todoForm.addEventListener('submit', handleTodoSubmit);
+  todoForm.addEventListener("submit", handleTodoSubmit);
 };
 
 const loadTodo = () => {
