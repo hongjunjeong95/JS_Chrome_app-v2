@@ -1,8 +1,8 @@
-const SCHEDULE_LS = 'schedule';
+const SCHEDULE_LS = "schedule";
 
-const scheduleForm = document.getElementById('jsScheduleForm');
-const scheduleInput = scheduleForm.querySelectorAll('input');
-const scheduleList = document.getElementById('jsScheduleList');
+const scheduleForm = document.getElementById("jsScheduleForm");
+const scheduleInput = scheduleForm.querySelectorAll("input");
+const scheduleList = document.getElementById("jsScheduleList");
 
 let schedules = [];
 
@@ -106,21 +106,21 @@ const handleScheduleUp = (event) => {
 };
 
 const scheduleGenericElement = () => {
-  const li = document.createElement('li');
-  const delBtn = document.createElement('button');
-  const upBtn = document.createElement('button');
-  const downBtn = document.createElement('button');
+  const li = document.createElement("li");
+  const delBtn = document.createElement("button");
+  const upBtn = document.createElement("button");
+  const downBtn = document.createElement("button");
 
-  delBtn.innerHTML = '❌';
-  delBtn.addEventListener('click', handleDeleteSchedule);
+  delBtn.innerHTML = "❌";
+  delBtn.addEventListener("click", handleDeleteSchedule);
   li.appendChild(delBtn);
 
-  upBtn.innerHTML = '🔼';
-  upBtn.addEventListener('click', handleScheduleUp);
+  upBtn.innerHTML = "🔼";
+  upBtn.addEventListener("click", handleScheduleUp);
   li.appendChild(upBtn);
 
-  downBtn.innerHTML = '🔽';
-  downBtn.addEventListener('click', handleScheduleDown);
+  downBtn.innerHTML = "🔽";
+  downBtn.addEventListener("click", handleScheduleDown);
   li.appendChild(downBtn);
 
   return li;
@@ -128,7 +128,7 @@ const scheduleGenericElement = () => {
 
 const paintSchedule = (text) => {
   const li = scheduleGenericElement();
-  const span = document.createElement('span');
+  const span = document.createElement("span");
   let id = 0;
 
   id = schedules.length + 1;
@@ -149,17 +149,17 @@ const paintSchedule = (text) => {
 
 const handleScheduleSubmit = (event) => {
   event.preventDefault();
-  const h2 = scheduleContainer.querySelector('h2');
-  h2.classList.remove('hiding');
-  const date = scheduleInput[0].value.split('-');
+  const h2 = scheduleContainer.querySelector("h2");
+  h2.classList.remove("hiding");
+  const date = scheduleInput[0].value.split("-");
   console.log(date);
   const inputValue = `${date[1]}-${date[2]} ${scheduleInput[1].value}`;
   paintSchedule(inputValue);
-  scheduleInput[1].value = '';
+  scheduleInput[1].value = "";
 };
 
 const askSchedule = () => {
-  scheduleForm.addEventListener('submit', handleScheduleSubmit);
+  scheduleForm.addEventListener("submit", handleScheduleSubmit);
 };
 
 const loadSchedule = () => {
@@ -172,7 +172,18 @@ const loadSchedule = () => {
   }
 };
 
+const today = () => {
+  const time = new Date();
+  const year = time.getFullYear();
+  let month = time.getMonth() + 1;
+  let date = time.getDate();
+  month = month < 10 ? `0${month}` : month;
+  date = date < 10 ? `0${date}` : date;
+  scheduleInput[0].value = `${year}-${month}-${date}`;
+};
+
 function init() {
+  today();
   loadSchedule();
   askSchedule();
 }
