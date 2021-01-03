@@ -11,7 +11,7 @@
   margin-bottom: 30px;
 }
 
-#jsScheduleForm input[type='date'] {
+#jsScheduleForm input[type="date"] {
   margin-right: 20px;
   font-size: 12px;
   font-weight: 600;
@@ -34,4 +34,8 @@
 .scheduleList-container ul {
   padding: 0 20px;
   max-width: 450px;
+}
+
+li > form {
+  margin-top: 20px;
 }

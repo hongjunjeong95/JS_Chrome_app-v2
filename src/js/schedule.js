@@ -107,7 +107,6 @@ const handleScheduleUp = (event) => {
 
 const handleAmendScheduleInput = (event) => {
   event.preventDefault();
-  console.log("hi");
   const form = event.target;
   const li = form.parentNode;
   const amendBtn = li.childNodes[3];
@@ -133,13 +132,19 @@ const handleAmendSchedule = (event) => {
   const span = li.childNodes[4];
   const input = document.createElement("input");
   const form = document.createElement("form");
+  const submit = document.createElement("button");
 
   btn.removeEventListener("click", handleAmendSchedule);
+
   input.value = span.innerHTML;
   form.appendChild(input);
   li.appendChild(form);
   span.innerHTML = "";
-  console.log("hi2");
+  submit.innerText = "Amend";
+  submit.className = "amend";
+  form.appendChild(input);
+  form.appendChild(submit);
+
   form.addEventListener("submit", handleAmendScheduleInput);
 };
 

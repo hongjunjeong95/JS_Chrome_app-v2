@@ -56,3 +56,23 @@ li > button {
   border: none;
   cursor: pointer;
 }
+
+li > form {
+  margin-top: 20px;
+}
+
+li form .amend {
+  margin-left: 10px;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: inset -3px -3px 3px rgb(114, 107, 107);
+}
+
+li form .amend:active {
+  box-shadow: none;
+}

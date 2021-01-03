@@ -246,12 +246,17 @@ function handleAmend(event) {
   const span = li.childNodes[5];
   const input = document.createElement("input");
   const form = document.createElement("form");
+  const submit = document.createElement("button");
+
   btn.removeEventListener("click", handleAmend);
 
   input.value = span.innerHTML;
-  form.appendChild(input);
-  li.appendChild(form);
   span.innerHTML = "";
+  submit.innerText = "Amend";
+  submit.className = "amend";
+  form.appendChild(input);
+  form.appendChild(submit);
+  li.appendChild(form);
 
   if (ul.id === "jsPendingList") {
     form.addEventListener("submit", (event) =>
