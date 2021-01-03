@@ -110,10 +110,12 @@ const handleAmendScheduleInput = (event) => {
   console.log("hi");
   const form = event.target;
   const li = form.parentNode;
+  const amendBtn = li.childNodes[3];
   const span = li.childNodes[4];
   const input = form.querySelector("input");
   const text = input.value;
-  console.log(text);
+
+  amendBtn.addEventListener("click", handleAmendSchedule);
   span.innerHTML = text;
   li.removeChild(form);
 
@@ -132,6 +134,7 @@ const handleAmendSchedule = (event) => {
   const input = document.createElement("input");
   const form = document.createElement("form");
 
+  btn.removeEventListener("click", handleAmendSchedule);
   input.value = span.innerHTML;
   form.appendChild(input);
   li.appendChild(form);
@@ -145,7 +148,7 @@ const scheduleGenericElement = () => {
   const delBtn = document.createElement("button");
   const upBtn = document.createElement("button");
   const downBtn = document.createElement("button");
-  const amendBtn = document.createElement("butoon");
+  const amendBtn = document.createElement("button");
 
   delBtn.innerHTML = "❌";
   delBtn.addEventListener("click", handleDeleteSchedule);

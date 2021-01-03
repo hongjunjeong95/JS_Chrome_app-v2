@@ -213,11 +213,14 @@ function handleAmendInput(event, option) {
   event.preventDefault();
   const form = event.target;
   const li = form.parentNode;
+  const amendBtn = li.childNodes[3];
   const span = li.childNodes[5];
   const input = form.querySelector("input");
   const text = input.value;
+
   span.innerHTML = text;
   li.removeChild(form);
+  amendBtn.addEventListener("click", handleAmend);
 
   if (option === "jsPendingList") {
     pendings.forEach(function (todo) {
@@ -243,6 +246,7 @@ function handleAmend(event) {
   const span = li.childNodes[5];
   const input = document.createElement("input");
   const form = document.createElement("form");
+  btn.removeEventListener("click", handleAmend);
 
   input.value = span.innerHTML;
   form.appendChild(input);
@@ -265,7 +269,7 @@ const genericElement = () => {
   const delBtn = document.createElement("button");
   const upBtn = document.createElement("button");
   const downBtn = document.createElement("button");
-  const amendBtn = document.createElement("butoon");
+  const amendBtn = document.createElement("button");
 
   delBtn.innerHTML = "❌";
   delBtn.addEventListener("click", handleDelete);
